@@ -1,4 +1,4 @@
-package RMIScrambler;
+package RMIScrambler.InClass;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
