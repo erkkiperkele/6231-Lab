@@ -15,7 +15,6 @@ import java.rmi.RemoteException;
 import java.util.Scanner;
 
 public class TextScramblerClient {
-
     //Return basic menu.
     public static void showMenu() {
         System.out.println("\n****Welcome to TextScrambler****\n");
@@ -27,6 +26,8 @@ public class TextScramblerClient {
     }
 
     public static void main(String[] args) {
+
+
 
         //Create an instance of the server -- to be replaced with RMIRegistry lookup.
         TextScramblerServer server = new TextScramblerServer();
@@ -54,36 +55,32 @@ public class TextScramblerClient {
             }
 
 
-            try {
-                // Manage user selection.
-                switch (userChoice) {
-                    case 1:
-                        System.out.println(requestInput);
-                        userInput = keyboard.next();
-                        System.out.println(server.testInputText(userInput));
-                        showMenu();
-                        break;
-                    case 2:
-                        System.out.println(requestInput);
-                        userInput = keyboard.next();
-                        System.out.println(server.reverse(userInput));
-                        showMenu();
-                        break;
-                    case 3:
-                        System.out.println(requestInput);
-                        userInput = keyboard.next();
-                        System.out.println(server.scramble(userInput));
-                        showMenu();
-                        break;
-                    case 4:
-                        System.out.println("Have a nice day!");
-                        keyboard.close();
-                        System.exit(0);
-                    default:
-                        System.out.println("Invalid Input, please try again.");
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
+            // Manage user selection.
+            switch (userChoice) {
+                case 1:
+                    System.out.println(requestInput);
+                    userInput = keyboard.next();
+                    System.out.println(server.testInputText(userInput));
+                    showMenu();
+                    break;
+                case 2:
+                    System.out.println(requestInput);
+                    userInput = keyboard.next();
+                    System.out.println(server.reverse(userInput));
+                    showMenu();
+                    break;
+                case 3:
+                    System.out.println(requestInput);
+                    userInput = keyboard.next();
+                    System.out.println(server.scramble(userInput));
+                    showMenu();
+                    break;
+                case 4:
+                    System.out.println("Have a nice day!");
+                    keyboard.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid Input, please try again.");
             }
         }
     }

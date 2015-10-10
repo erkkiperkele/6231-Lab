@@ -52,6 +52,7 @@ package RMIScrambler.InClass; /**
 
 import RMIScrambler.InClass.TextScramblerServer;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -72,6 +73,15 @@ public class TextScramblerClient {
     }
 
     public static void main(String[] args) {
+
+        String policiyPath = "./TextScramblerSecurity.policy";
+        File test = new File(policiyPath);
+        boolean exists = test.exists();
+//        if(f.exists() && !f.isDirectory()) {
+//            // do something
+//        }
+
+        System.setProperty("java.security.policy",policiyPath);
 
         TextScramblerInterface server = new TextScramblerServer();
 

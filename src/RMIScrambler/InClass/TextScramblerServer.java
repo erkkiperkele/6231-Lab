@@ -1,7 +1,6 @@
 package RMIScrambler.InClass;
 
 import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -9,6 +8,8 @@ import java.rmi.server.UnicastRemoteObject;
 public class TextScramblerServer implements TextScramblerInterface {
 
     public static void main(String[] args) {
+
+
         try {
             (new TextScramblerServer()).exportServer();
             System.out.println("Server is up and running! (great)");
@@ -24,18 +25,37 @@ public class TextScramblerServer implements TextScramblerInterface {
         r.bind("test", obj);
     }
 
-    @Override
-    public String testInputText(String inputText) throws RemoteException {
-        return null;
+    @Override //Return input text as-is.
+    public String testInputText(String inputText) {
+
+        return "Your input text is: " + inputText;
     }
 
-    @Override
-    public String reverse(String inputText) throws RemoteException {
-        return null;
+    @Override //Return the string reversed.
+    public String reverse(String inputText) {
+        String reversedInput = "";
+        for(int i=0; i<inputText.length();i++)
+        {
+            reversedInput=reversedInput+inputText.charAt((inputText.length()-1)-i);
+        }
+        return "Result: "+reversedInput;
     }
 
-    @Override
-    public String scramble(String inputText) throws RemoteException {
-        return null;
+    @Override //Return the string scrambled.
+    public String scramble(String inputText) {
+        String scrambledInput="";
+
+        for(int i=0; i<inputText.length();i++)
+        {
+            if(i%2==0)
+            {
+                scrambledInput=scrambledInput+inputText.charAt(i);
+            }
+            else
+            {
+                scrambledInput=inputText.charAt(i)+scrambledInput;
+            }
+        }
+        return "Result: "+scrambledInput;
     }
 }
