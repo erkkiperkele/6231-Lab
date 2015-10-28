@@ -38,6 +38,7 @@ public class TextScramblerServer implements TextScramblerInterface {
         {
             reversedInput=reversedInput+inputText.charAt((inputText.length()-1)-i);
         }
+        System.out.println("Server sending back: " + reversedInput);
         return "Result: "+reversedInput;
     }
 

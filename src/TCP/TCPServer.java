@@ -35,8 +35,11 @@ public class TCPServer {
             server_inputMsg = inFromClient.readLine();
             System.out.println("Received: " + server_inputMsg);
 
-            //TO FINISH
+            //Reverse the string
+            server_reversedMsg = new StringBuffer(server_inputMsg).reverse().toString() + '\n';
 
+            //Send
+            outToClient.writeBytes(server_reversedMsg);
         }
     }
 
